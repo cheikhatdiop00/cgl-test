@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_compte_resultat">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="web.internal_layout">
+          <div class="page" style="margin-top:-10px">
+            <style type="text/css">
+
+
+          #tuncht {
+                background:#d66b00;
+              }
+              #tunch {
+                background: #d66b00;
+                color: white;
+              }
+              #tunch2 {
+                background: #ffba75;
+              }
+              #tunwidth {
+                background: #d66b00;
+                color: white;
+
+              }
+                td{
+                    padding:2px;
+                }
+            </style>
+              <div class="row">
+                  <div class="col-12">
+                      <table style="width:100%">
+                          <tr>
+                              <td style="width:10%;padding-top:-20px">
+                                  <p style="font-weight:bold">COMPTE DE RESULTAT</p>
+                              </td>
+
+                                 <td style="width:5%;padding:5px">
+                                  <p style="font-weight:b;border-right:1px solid grey;height:30px;margin-left:-20px">
+                                      <![CDATA[&nbsp;]]>
+                                    </p>
+                              </td>
+                               <td style="width:20%;padding:5px">
+                                  <p>Désignation entité :</p>
+                              </td>
+                               <td style="width:25%;">
+                                   <p style="margin-left:-90px"><span t-field="o.company_id.name" /></p>
+                              </td>
+                                <td style="width:20%;padding:2px">
+                                  <p style="font-weight:bold;margin-left:-30px">
+                                      <![CDATA[&nbsp;]]>
+                                    </p>
+                              </td>
+                               <td style="width:15%;padding-left:20px">
+                                   <p><span >Exercice clos le</span></p>
+                              </td>
+                              <td style="width:15%;padding-left:15px">
+                                   <p><span t-field="o.fin"/></p>
+                              </td>
+
+                          </tr>
+
+                      </table>
+
+                      <table style="width:100%;margin-top:-40px">
+                          <tr>
+
+
+                               <td style="width:21%;">
+                                  <p style="margin-left:180px"> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>N° ID Fiscal :</p>
+                              </td>
+                               <td style="width:29%;padding-left:25px">
+                                   <p style="margin-left:25px" ><span t-field="o.company_id.vat"/></p>
+                              </td>
+
+                               <td style="width:30%;">
+                                   <p style="margin-left:300px"><span>Durée (en mois)</span></p>
+                              </td>
+                              <td style="width:10%;padding-left:70px">
+                                   <p><span>12</span></p>
+                              </td>
+
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+            <div align="center">
+              <strong>
+                  <p style="margin-top:5px"> COMPTE DE RESULTAT</p>
+              </strong>
+
+            </div>
+            <br/>
+
+
+
+
+
+                    <!-- troixieme_tableau -->
+                   <table  style="width:100%;margin-top:-30px" height="1000" >
+
+
+                    <tr id="tunch">
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="40px" >
+                                REF
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="40px" >
+                                LIBELLE
+                            </td>
+                            <td align="center" class="align-middle"  style="border:1px solid #2a8bfe" height="40px" >
+                                Note
+                            </td>
+                            <td align="center" class="align-middle"   style="border:1px solid #2a8bfe" height="40px" >
+                               Exercice clos le (<span t-field="o.fin"/>)
+                            </td>
+
+
+                            <td   align="center" class="align-middle"  style="border:1px solid #2a8bfe" height="40px">
+                                Exercice N-1 clos le (<span t-field="o.debut"/>)
+                            </td>
+
+
+                    </tr>
+                    <tr id=" ">
+                            <td   class="align-middle"  style="border:1px solid #2a8bfe"  height="32px" >
+                               TA
+                            </td>
+                            <td   class="align-middle"  style="border:1px solid #2a8bfe" height="32px"  >
+                                Vente de marchandise
+                            </td>
+                            <td align="center" class="align-middle"  style="border:1px solid #2a8bfe" height="32px" >
+                            21
+                            </td>
+                            <td align="right" class="align-middle"  style="border:1px solid #2a8bfe;padding-right:3px" height="32px"  >
+                           
+                                 <t t-if="ta_net" t-esc="'{0:,.0f}'.format(int(ta_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle"  style="border:1px solid #2a8bfe;padding-right:3px" height="32px"  >
+                             
+                                 <t t-if="tan_net" t-esc="'{0:,.0f}'.format(int(tan_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr>
+                    <tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px"  >
+                                RA
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px"  >
+                               Achat de marchandises
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              22
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                          
+                                 <t t-if="ra_net" t-esc="'{0:,.0f}'.format(int(ra_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="ran_net" t-esc="'{0:,.0f}'.format(int(ran_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               RB
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Variation de stock de marchandises
+                            </td>
+                            <td  align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              6
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                            
+                                 <t t-if="rb_net" t-esc="'{0:,.0f}'.format(int(rb_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                          
+                                 <t t-if="rbn_net" t-esc="'{0:,.0f}'.format(int(rbn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                XA
+                            </td>
+                            <td   class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px" >
+                                <strong> MARGE COMMERCIALE</strong>
+                            </td>
+                            <td  align="center" class="align-middle"  id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                            <strong> </strong>
+                            </td>
+                            <td   align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong>
+                                  
+                                   <t t-if="xa_net" t-esc="'{0:,.0f}'.format(int(xa_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td    align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            <strong> 
+                             
+                                 <t t-if="xan_net" t-esc="'{0:,.0f}'.format(int(xan_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              TB
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Ventes de produits fabriques
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              21
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                           
+                                 <t t-if="tb_net" t-esc="'{0:,.0f}'.format(int(tb_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="tbn_net" t-esc="'{0:,.0f}'.format(int(tbn_net)).replace(',', '.')" />
+                            </td>
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                TC
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Travaux, services vendus
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              21
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="tc_net" t-esc="'{0:,.0f}'.format(int(tc_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="tcn_net" t-esc="'{0:,.0f}'.format(int(tcn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                                TD
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Produits accessoires
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              21
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                            
+                                 <t t-if="td_net" t-esc="'{0:,.0f}'.format(int(td_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="tdn_net" t-esc="'{0:,.0f}'.format(int(tdn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                XB
+                            </td>
+                            <td   class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px" >
+                                <strong>CHIFFRE D'AFFAIRES </strong>
+                            </td>
+                            <td align="center"  class="align-middle"  id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                             <strong> </strong>
+                            </td>
+                            <td  align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                               <strong>
+                                  
+                                    <t t-if="xb_net" t-esc="'{0:,.0f}'.format(int(xb_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right"  class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             <strong> 
+                               
+                                  <t t-if="xbn_net" t-esc="'{0:,.0f}'.format(int(xbn_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               TE
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Production stockee (ou destockage)
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              6
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            
+                                 <t t-if="te_net" t-esc="'{0:,.0f}'.format(int(te_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="ten_net" t-esc="'{0:,.0f}'.format(int(ten_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               TF
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Production immobilisee
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              21
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                            
+                                 <t t-if="tf_net" t-esc="'{0:,.0f}'.format(int(tf_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="tfn_net" t-esc="'{0:,.0f}'.format(int(tfn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                TG
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                                Subventions d'exploitation
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                              21
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="tg_net" t-esc="'{0:,.0f}'.format(int(tg_net)).replace(',', '.')" />
+                            </td>
+
+                            <td    align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="tgn_net" t-esc="'{0:,.0f}'.format(int(tgn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              TH
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Autres produits
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                              21
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="th_net" t-esc="'{0:,.0f}'.format(int(th_net)).replace(',', '.')" />
+                            </td>
+
+                            <td    align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                          
+                                 <t t-if="thn_net" t-esc="'{0:,.0f}'.format(int(thn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                TI
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Transfert de charges d'exploitation
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              21
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="ti_net" t-esc="'{0:,.0f}'.format(int(ti_net)).replace(',', '.')" />
+                            </td>
+
+                            <td    align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                          
+                                 <t t-if="tin_net" t-esc="'{0:,.0f}'.format(int(tin_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RC
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Achat de matiéres premiéres et fournitures liées
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              22
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="rc_net" t-esc="'{0:,.0f}'.format(int(rc_net)).replace(',', '.')" />
+                            </td>
+
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                        
+                                 <t t-if="rcn_net" t-esc="'{0:,.0f}'.format(int(rcn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                             RD
+                            </td>
+                            <td lign="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               Variation de stocks de matiéres premiéres et fournitures liées
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              6
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="rd_net" t-esc="'{0:,.0f}'.format(int(rd_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"   class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="rdn_net" t-esc="'{0:,.0f}'.format(int(rdn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               RE
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Autres achats
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              22
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="re_net" t-esc="'{0:,.0f}'.format(int(re_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="ren_net" t-esc="'{0:,.0f}'.format(int(ren_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RF
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Variation de stocks d'autres approvisionnements
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              6
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                            
+                                 <t t-if="rf_net" t-esc="'{0:,.0f}'.format(int(rf_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="rfn_net" t-esc="'{0:,.0f}'.format(int(rfn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RG
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Transport
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              23
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="rg_net" t-esc="'{0:,.0f}'.format(int(rg_net)).replace(',', '.')" />
+                            </td>
+
+                            <td    align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                         
+                                 <t t-if="rgn_net" t-esc="'{0:,.0f}'.format(int(rgn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RH
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Services extérieurs
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              24
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                         
+                                 <t t-if="rh_net" t-esc="'{0:,.0f}'.format(int(rh_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="rhn_net" t-esc="'{0:,.0f}'.format(int(rhn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RI
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Impots et taxes
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              25
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                           
+                                 <t t-if="ri_net" t-esc="'{0:,.0f}'.format(int(ri_net)).replace(',', '.')" />
+                            </td>
+
+                            <td    align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <span t-esc="rin_net"/>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RJ
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Autres charges
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              26
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="rj_net" t-esc="'{0:,.0f}'.format(int(rj_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              
+                                 <t t-if="rjn_net" t-esc="'{0:,.0f}'.format(int(rjn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                                XC
+                            </td>
+                            <td    class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px" >
+
+                                <strong> VALEUR AJOUTEE </strong>
+                            </td>
+                            <td align="center"  class="align-middle"  id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                            <strong> </strong>
+                            </td>
+                            <td  align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong>
+                                
+                                   <t t-if="xc_net" t-esc="'{0:,.0f}'.format(int(xc_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right"  class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            <strong> 
+                                
+                                 <t t-if="xcn_net" t-esc="'{0:,.0f}'.format(int(xcn_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RK
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Charges de personnel
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              27
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="rk_net" t-esc="'{0:,.0f}'.format(int(rk_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="rkn_net" t-esc="'{0:,.0f}'.format(int(rkn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                            XD
+                         </td>
+                            <td    class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px" >
+                                             <strong>EXCEDENT BRUT D'EXPLOITATION </strong>
+
+                            </td>
+                            <td align="center"  class="align-middle" id="tunch" style="border:1px solid #2a8bfe"  height="32px">
+                            <strong> 28</strong>
+                            </td>
+                            <td  align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong> 
+                                 
+                                   <t t-if="xd_net" t-esc="'{0:,.0f}'.format(int(xd_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right"  class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            <strong>
+                               
+                                 <t t-if="xdn_net" t-esc="'{0:,.0f}'.format(int(xdn_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                                TJ
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                                Reprises d'armotissement, de provisions et de dépréciations
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              28
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                            
+                                 <t t-if="tj_net" t-esc="'{0:,.0f}'.format(int(tj_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              
+                                 <t t-if="tjn_net" t-esc="'{0:,.0f}'.format(int(tjn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RL
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Dotation aux amortissements, aux provisions et aux dépréciations
+                            </td>
+                            <td  align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              3C/28
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="rl_net" t-esc="'{0:,.0f}'.format(int(rl_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            
+                                 <t t-if="rln_net" t-esc="'{0:,.0f}'.format(int(rln_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                XE
+                            </td>
+                            <td     class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                                <strong>RESULTAT D'EXPLOITATION </strong>
+                            </td>
+                            <td align="center"  class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                            <strong> </strong>
+                            </td>
+                            <td align="right"  class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong> 
+                                
+                                   <t t-if="xe_net" t-esc="'{0:,.0f}'.format(int(xe_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td    align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            <strong>
+                               
+                                 <t t-if="xen_net" t-esc="'{0:,.0f}'.format(int(xen_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                TK
+                            </td>
+                            <td    class="align-middle"  style="border:1px solid #2a8bfe" height="32px" >
+                                Revenus financiers et assimilés
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              29
+                            </td>
+                            <td align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                          
+                                 <t t-if="tk_net" t-esc="'{0:,.0f}'.format(int(tk_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"  class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            
+                                 <t t-if="tkn_net" t-esc="'{0:,.0f}'.format(int(tkn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                TL
+                            </td>
+                            <td    class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               Reprises de provisions et dépréciations financiéres
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              28
+                            </td>
+                            <td align="right"   class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="tl_net" t-esc="'{0:,.0f}'.format(int(tl_net)).replace(',', '.')" />
+                            </td>
+
+                            <td align="right"   class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="tln_net" t-esc="'{0:,.0f}'.format(int(tln_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                TM
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               Transferts de charges financiéres
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              12
+                            </td>
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="tm_net" t-esc="'{0:,.0f}'.format(int(tm_net)).replace(',', '.')" />
+                            </td>
+
+                            <td  align="right"   class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                            
+                                 <t t-if="tmn_net" t-esc="'{0:,.0f}'.format(int(tmn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              RM
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               Frais financiers et charges assimilés
+                            </td>
+                            <td align="center"  class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              29
+                            </td>
+                            <td  align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="rm_net" t-esc="'{0:,.0f}'.format(int(rm_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right"   class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="rmn_net" t-esc="'{0:,.0f}'.format(int(rmn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               RN
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               Dotations aux provisions et  aux dépréciations financiéres
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              3C/28
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                           
+                                 <t t-if="rn_net" t-esc="'{0:,.0f}'.format(int(rn_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="rnn_net" t-esc="'{0:,.0f}'.format(int(rnn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                              XF
+                            </td>
+                            <td   class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                                  <strong> RESULTAT FINANCIER</strong>
+                            </td>
+                            <td align="center" class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                              <strong> </strong>
+                            </td>
+                            <td align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                                <strong> 
+                                  
+                                     <t t-if="xf_net" t-esc="'{0:,.0f}'.format(int(xf_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong> 
+                                   
+                                   <t t-if="xfn_net" t-esc="'{0:,.0f}'.format(int(xfn_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               XG
+                            </td>
+                            <td   class="align-middle" id="" style="border:1px solid #2a8bfe;color:blue;" height="32px">
+                                <strong> RESULTAT DES ACTIVITES ORDINAIRES </strong>
+                            </td>
+                            <td align="center" class="align-middle"  style="border:1px solid #2a8bfe" height="32px" >
+
+                            </td>
+                            <td align="right" class="align-middle"  style="border:1px solid #2a8bfe;padding-right:3px;color:blue" height="32px">
+                              <strong>
+                                  
+                                   <t t-if="xg_net" t-esc="'{0:,.0f}'.format(int(xg_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right" class="align-middle"  style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong>
+                                
+                                   <t t-if="xgn_net" t-esc="'{0:,.0f}'.format(int(xgn_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                              TN
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Produits des cessions d'immobilisation
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              3D
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                           
+                                 <t t-if="tn_net" t-esc="'{0:,.0f}'.format(int(tn_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                          
+                                 <t t-if="tnn_net" t-esc="'{0:,.0f}'.format(int(tnn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               TO
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Autres Produits HAO
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              30
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="to_net" t-esc="'{0:,.0f}'.format(int(to_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="ton_net" t-esc="'{0:,.0f}'.format(int(ton_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RO
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Valeurs comptables des cessions d'immobilisation
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              3D
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="ro_net" t-esc="'{0:,.0f}'.format(int(ro_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                           
+                                 <t t-if="ron_net" t-esc="'{0:,.0f}'.format(int(ron_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                RP
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Autres Charges HAO
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              30
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                            
+                                 <t t-if="rp_net" t-esc="'{0:,.0f}'.format(int(rp_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                             
+                                 <t t-if="rp_net" t-esc="'{0:,.0f}'.format(int(rp_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                               XH
+                            </td>
+                            <td   class="align-middle"  style="border:1px solid #2a8bfe;color:blue"  height="32px">
+                              <strong> RESULTAT HORS ACTIVITES ORDINAIRES </strong>
+                            </td>
+                            <td align="center" class="align-middle"  style="border:1px solid #2a8bfe" height="32px">
+
+                            </td>
+                            <td align="right" class="align-middle"  style="border:1px solid #2a8bfe;padding-right:3px;color:blue" height="32px">
+                              <strong>
+                                 
+                                   <t t-if="xh_net" t-esc="'{0:,.0f}'.format(int(xh_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right" class="align-middle"  style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              <strong>
+                                 
+                                   <t t-if="xhn_net" t-esc="'{0:,.0f}'.format(int(xhn_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                              RQ
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Participation des travailleurs
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              30
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                              
+                                 <t t-if="rq_net" t-esc="'{0:,.0f}'.format(int(rq_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                           
+                                 <t t-if="rqn_net" t-esc="'{0:,.0f}'.format(int(rqn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                               RS
+                            </td>
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                                Impots sur le resultat
+                            </td>
+                            <td align="center" class="align-middle" style="border:1px solid #2a8bfe" height="32px" >
+                              37
+                            </td>
+                            <td align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px" >
+                             
+                                 <t t-if="rs_net" t-esc="'{0:,.0f}'.format(int(rs_net)).replace(',', '.')" />
+                            </td>
+
+                            <td   align="right" class="align-middle" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                           
+                                 <t t-if="rsn_net" t-esc="'{0:,.0f}'.format(int(rsn_net)).replace(',', '.')" />
+                            </td>
+
+
+                    </tr><tr id=" ">
+                            <td   class="align-middle" style="border:1px solid #2a8bfe" height="32px">
+                                XI
+                            </td>
+                            <td   class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                                <strong> RESULTAT NET</strong>
+                            </td>
+                            <td align="center" class="align-middle" id="tunch" style="border:1px solid #2a8bfe" height="32px">
+                            <strong> </strong>
+                            </td>
+                            <td align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong> 
+                                
+                                   <t t-if="xi_net" t-esc="'{0:,.0f}'.format(int(xi_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+                            <td   align="right" class="align-middle" id="tunch" style="border:1px solid #2a8bfe;padding-right:3px" height="32px">
+                              <strong>
+                                 
+                                   <t t-if="xin_net" t-esc="'{0:,.0f}'.format(int(xin_net)).replace(',', '.')" />
+                                </strong>
+                            </td>
+
+
+                    </tr>
+
+
+                    </table>
+
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>

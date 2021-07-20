@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_res_company_form_inherit">
+      <field name="name">res.company.form.inherit</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form/sheet/notebook/page[1]" position="after">
+
+          <page string='Informations'>
+
+            <group string="Identification">
+              <group>
+
+                <field name="type_societe"></field>
+
+                <field name="code_activite" string="Code Activité"></field>
+                <field name="activite_1" attrs="{'invisible': [('code_activite', '!=', 'code_forme_juridique')], 'required': [('code_activite', '==', 'code_forme_juridique')]}"/>
+                   <field name="activite_2" attrs="{'invisible': [('code_activite', '!=', 'code_regime_fiscale')], 'required': [('code_activite', '==', 'code_regime_fiscale')]}"/>
+                  <field name="activite_3" attrs="{'invisible': [('code_activite', '!=', 'code_pays_du_siege_social')], 'required': [('code_activite', '==', 'code_pays_du_siege_social')]}"/>
+                
+
+                <field name="raison_social"/>
+
+                 
+                 
+                <field name="sigle_usuel"></field>
+             
+                <field name="capital" style="text-align:right"></field>
+              
+                <field name="nbre_de_titre" style="text-align:right"/>
+
+                <field name="val_nominal" style="text-align:right"/>
+                <field name="num_caisse_securite"></field>
+
+              </group>
+
+              <group>
+                <field name="complement"></field>
+                <field name="code_postal"></field>
+                <field name="code_pays" string="Code Pays"></field>
+                <field name="nom_pays"></field>
+                <field name="region"></field>
+                <field name="ville"></field>
+                <field name="num_id_fiscal"></field>
+                <field name="greffe"></field>
+               
+              </group>
+                   <group style="width:100%;margin-top:-10px">
+                     <field name="num_rc" />
+                </group>
+            </group>
+
+          </page>
+
+        </xpath>
+
+        <xpath expr="//form/sheet/notebook/page[2]" position="after">
+
+          <page string='Informations Supplémentaire'>
+
+            <group string="Identification Supplémentaires">
+              <group>
+
+               
+                <field name="pays_siege"></field>
+                <field name="nombre_etab_dans_le_pays" style="text-align:right"></field>
+
+                <field name="nombre_etab_hors_pays"></field>
+
+                <field name="num_code_importateur"></field>
+
+                
+
+              </group>
+
+              <group>
+                <field name="regime_fiscal"></field>
+                <field name="premiere_annee_exercice" style="text-align:right"></field>
+                <field name="num_repertoire_entreprise" style="text-align:right"></field>
+                  
+              </group>
+            </group>
+
+            <group>
+
+              <group string="Personnes à Contacter">
+                <field name="nom_contacter"></field>
+                <field name="qualite_contacter"></field>
+                <field name="adresse_contacter"></field>
+
+              </group>
+              <group string="Signature">
+                <field name="nom_signature"></field>
+                <field name="qualite_signature"></field>
+                <field name="controle_entete"></field>
+
+              </group>
+
+            </group>
+
+          </page>
+
+        </xpath>
+
+        <xpath expr="//form/sheet/notebook/page[3]" position="after">
+          <page string="Banque" name="Banque">
+
+            <group>
+              <field name="bank_ids" string="Banque">
+                <tree editable="bottom">
+
+                  <field name="nom_banque"/>
+
+                  <field name="code_banque"/>
+                  <field name="rib"/>
+                  <field name="num_compte"/>
+
+                  <field name="code_guichet"/>
+
+                  <field name="iban"/>
+
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+        <xpath expr="//form/sheet/notebook/page[4]" position="after">
+          <page string="Activité" name="activite">
+
+            <group>
+              <field name="activity_ids" string="Activité">
+                <tree editable="bottom">
+
+                  <field name="designation_activite"/>
+
+                  <field name="code_activite"/>
+                  <field name="ca_ht_vt" style="text-align:right"/>
+
+                  <field name="pourcent_ca_ht_vt" />
+                  
+                    
+
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+
+        <xpath expr="//form/sheet/notebook/page[5]" position="after">
+          <page string='Associés' name="Associés">
+
+            <group>
+              <field name="associes_ids" string="Associés">
+                <tree editable="bottom">
+
+                  <field name="nom_associes"/>
+
+                  <field name="prenom_associes"/>
+
+                  <field name="nationalites_associes"/>
+
+                  <field name="qualite_associes"/>
+
+                  <field name="nombre_titre"/>
+
+                  <field name="pourcent_detenue"/>
+
+                  <field name="adresse_associes"/>
+
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+
+        <xpath expr="//form/sheet/notebook/page[6]" position="after">
+          <page string='Dirigeants' name="Dirigeants">
+
+            <group>
+              <field name="dirigeants_ids" string="Dirigeants">
+                <tree editable="bottom">
+
+                  <field name="nom_dirigeant"/>
+
+                  <field name="id_fiscal"/>
+
+                  <field name="qualite_dirigeant"/>
+
+                  <field name="adresse_dirigeant"/>
+
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+
+        <xpath expr="//form/sheet/notebook/page[7]" position="after">
+          <page string='Membres du Conseil' name="Membre du conseil">
+
+            <group>
+              <field name="conseil_ids" string="Conseil">
+                <tree editable="bottom">
+
+                  <field name="nom_conseil"></field>
+                  <field name="prenom_conseil"></field>
+
+                  <field name="qualite_conseil"></field>
+
+                  <field name="adresse_conseil"></field>
+
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+
+      </field>
+    </record>
+
+  </data>
+</odoo>

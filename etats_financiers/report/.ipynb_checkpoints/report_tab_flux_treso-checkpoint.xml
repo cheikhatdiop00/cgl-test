@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_tab_flux_treso">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="web.internal_layout">
+          <div class="page">
+            <style type="text/css">
+
+
+
+          #tuncht {
+                background:#d66b00;
+              }
+              #tunch {
+                background: #d66b00;
+                color: white;
+              }
+              #tunch2 {
+                background: #ffba75;
+
+              }
+              #tunwidth {
+                background: #d66b00;
+                color: white;
+
+              }
+                td{
+                    padding-left:2px;
+                }
+
+            </style>
+
+               <div class="row">
+                  <div class="col-12">
+                      <table style="width:100%">
+                          <tr>
+
+                               <td style="width:20%;padding:5px">
+                                  <p>Désignation entité :</p>
+                              </td>
+                               <td style="width:40%;">
+                                    <p style="margin-left:-90px"><span t-field="o.company_id.name" ></span></p>
+                              </td>
+                                <td style="width:20%;padding:2px">
+                                  <p style="font-weight:bold;margin-left:-30px">
+                                      <![CDATA[&nbsp;]]>
+                                    </p>
+                              </td>
+                               <td style="width:15%;padding-left:20px">
+                                   <p><span >Exercice clos le</span></p>
+                              </td>
+                              <td style="width:15%;padding-left:15px">
+                                  <p><span t-field="o.fin"></span></p>
+                              </td>
+
+                          </tr>
+
+                      </table>
+
+                      <table style="width:100%;">
+                          <tr>
+
+                               <td style="width:20%;">
+                                  <p style=""> <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>N° ID Fiscal :</p>
+                              </td>
+                               <td style="width:30%;padding-left:-100px">
+                                   <p style="margin-left:-130px"><span t-field="o.company_id.vat" ></span></p>
+                              </td>
+
+                               <td style="width:30%;">
+                                   <p style="margin-left:300px"><span>Durée (en mois)</span></p>
+                              </td>
+                              <td style="width:10%;padding-left:60px">
+                                   <p><span>12</span></p>
+                              </td>
+
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+            <div align="center">
+              <strong>
+                  <p style="margin-top:10px"> TABLEAU DES  FLUX DE TRESORERIE</p>
+              </strong>
+
+            </div>
+            <br/>
+
+
+
+
+
+                       <!-- 4_tableau -->
+
+                  <table class="" style="width:100%;margin-top:-20px;border-collapse:collapse" >
+
+
+                   <tr id="tunch">
+                           <td align="center" class="align-middle" style="border:1px solid #2a8bfe"  height="50" >
+                               REF
+                           </td>
+                           <td align="center" class="align-middle" style="border:1px solid #2a8bfe"  height="50" >
+                               LIBELLE
+                           </td>
+                           <td align="center" class="align-middle" style="border:1px solid #2a8bfe"  height="50" >
+                           Note
+                           </td>
+                           <td align="center" class="align-middle" style="border:1px solid #2a8bfe;width:20%"  height="50">
+                              Exercice N
+                           </td>
+
+
+                           <td   align="center" class="align-middle" style="border:1px solid #2a8bfe;width:20%"  height="50">
+                               Exercice N-1
+                           </td>
+
+
+                   </tr>
+
+                   <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40">
+                               ZA
+                           </td>
+                           <td   class="align-middle" id="" style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Trésorerie nette au 1er janvier (Trésorerie actif N - 1 - Trésorerie passif N-1)
+                           </td>
+                           <td  align="center" class="align-middle" id="" style="border:1px solid #2a8bfe;width:5%"  height="40">
+                               <strong>A</strong>
+                           </td>
+
+                           <td align="right" class="align-middle" id="" style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+
+                               <t t-esc="'{0:,.0f}'.format(int(za)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id="" style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+
+                               <t t-esc="'{0:,.0f}'.format(int(zan)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr>
+
+                    <tr >
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td   class="align-middle" id="" style="border:1px solid #2a8bfe;width:50%"  height="40" >
+                              Flux de tresorerie provenant des activités opérationnelles
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%;"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"  height="40">
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%" height="40">
+                               FA
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Capacité d'autofinancement global (C.A.FG)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"  height="40">
+
+                               <t t-esc="'{0:,.0f}'.format(int(fa)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fan)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FB
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Actif circulant HAO
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"  height="40">
+
+                               <t t-esc="'{0:,.0f}'.format(int(fb)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"  height="40">
+                          <t t-esc="'{0:,.0f}'.format(int(fbn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FC
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Variation des stocks
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fc)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fcn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%;"  height="40">
+                               FD
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Variation des créances
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fd)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fdn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FE
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Variation du passif circulant
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fe)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px;"   height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fen)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%" height="40">
+                              Variation du BF lié aux activités opérationnelles (FB+FC+FD+FE)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(var)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(varn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZB
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Flux de trésorerie provenant des activités opérationnelles (somme FA ‡ FE)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+                                 <strong>B</strong>
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(zb)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+
+                               <t t-esc="'{0:,.0f}'.format(int(zbn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Flux de trésorerie provenant des activités d'investissement
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+
+                           </td>
+
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FF
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Décaissements liés aux acquisitions d'immobilisations incorporelles
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(ff)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(ffn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40">
+                               FG
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%" height="40">
+                              - Décaissements liés aux acquisitions d'immobilisations corporelles
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fg)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fgn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40">
+                               FH
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Décaissements liés aux acquisitions d'immobilisations financiéres
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fh)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fhn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FI
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Encaissements liés aux cessions d'immobilisations incorporelles et corporelles
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fi)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fin)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%" height="40" >
+                               FJ
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Encaissements liés aux cessions d'immobilisations financiéres
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                          <t t-esc="'{0:,.0f}'.format(int(fj)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fjn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZC
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%" height="40">
+                            Flux de trésorerie provenant des activités opérationnelles d'investissement (somme FF à FJ)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+ <strong>C</strong>
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40" >
+                            <t t-esc="'{0:,.0f}'.format(int(zc)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                         <t t-esc="'{0:,.0f}'.format(int(zcn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Flux de trésorerie provenant du financement par les capitaux propres
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%" height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+
+                           </td>
+
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px" height="40">
+
+                           </td>
+
+
+                   </tr> <tr id="">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%" height="40">
+                               FK
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Augmentation de capital par apport nouveau
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fk)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fkn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FL
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Subventions d'investissement reçues
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fl)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fln)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FM
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Prélévement sur le capital
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                          <t t-esc="'{0:,.0f}'.format(int(fm)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                          <t t-esc="'{0:,.0f}'.format(int(fmn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%;"  height="40" >
+                               FN
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Dividendes versés
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fn)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                          <t t-esc="'{0:,.0f}'.format(int(fnn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZD
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Flux de trésorerie provenant des capitaux propres (somme FK à FN)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+ <strong>D</strong>
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(zd)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(zdn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Trésorerie provenant du financement par les capitaux étrangers
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+
+                           </td>
+
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40" >
+
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FO
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Emprunts
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fo)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fon)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               FP
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              + Autres  dettes financiéres
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fp)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(fpn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr>  <tr id=" ">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                              FQ
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              - Remboursements des emprunts et autres dettes financiéres
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fq)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(fqn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZE
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Flux de trésorerie provenant des capitaux érangers (somme FO à FQ)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+                           <strong>E</strong>
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(ze)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(zen)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZF
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              Flux de trésorerie provenant des activités de financement (D+E)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+                           <strong>F</strong>
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                           <t t-esc="'{0:,.0f}'.format(int(zf)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(zfn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr> <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZG
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                              VARIATION DE LA TRESORERIE NETTE DE LA PERIODE (B+C+F)
+                           </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+                           <strong>G</strong>
+
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(zg)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(zgn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr>
+
+                    <tr id="tunch2">
+                           <td   class="align-middle" style="border:1px solid #2a8bfe;width:5%"  height="40" >
+                               ZH
+                           </td>
+                           <td   class="align-middle" id=" " style="border:1px solid #2a8bfe;width:50%"  height="40">
+                          Trésorerie nette au 31 Décembre (G+A) Contrôle : Trésorerie actif N (A) +
+                          Trésorerie passif N (G) </td>
+                           <td align="center" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:5%"  height="40">
+                          <strong>H</strong>
+                           </td>
+                           <td align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                            <t t-esc="'{0:,.0f}'.format(int(zh)).replace(',', '.')" />
+                           </td>
+
+                           <td   align="right" class="align-middle" id=" " style="border:1px solid #2a8bfe;width:20%;padding-right:3px"  height="40">
+                       <t t-esc="'{0:,.0f}'.format(int(zhn)).replace(',', '.')" />
+                           </td>
+
+
+                   </tr>
+                   </table>
+
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
